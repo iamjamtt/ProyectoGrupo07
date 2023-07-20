@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">ProyectoGrupo07</string>
+    <string name="app_name">pclShop</string>
+
+    <!-- Strings for the Home Ramita Jamt -->
+    <string name="tvTitleHome">Productos</string>
+    <string name="tvNombrePlaceholders">Nombre</string>
+    <string name="tvCorreoPlaceholders">Correo</string>
+    <string name="btnPerfil">Perfil</string>
+    <string name="btnLogout">Cerrar Sesión</string>
 </resources>
