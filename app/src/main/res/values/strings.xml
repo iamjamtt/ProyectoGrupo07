@@ -1,3 +1,14 @@
 <resources>
+    //Aqui se agregan los strings que se van a utilizar en la vista de detalle de producto
     <string name="app_name">ProyectoGrupo07</string>
+    <string name="btnCarrito">Ir al Carrito</string>
+    <string name="btnRegresar">Regresar</string>
+    <string name="txt_nombre_producto">Nombre del Producto</string>
+    <string name="txt_detalle_producto">Detalle Producto</string>
+    <string name="txt_precio_producto">Precio: </string>
+    <string name="btnAgregar">Agregar al Carrito</string>
+    <string name="txt_precio">S/. </string>
+
+    //Aqui se agregan los strings que se van a utilizar en la vista de carrito de compra
+    <string name="txt_casi_terminas">¡Ya casi terminas!</string>
 </resources>
