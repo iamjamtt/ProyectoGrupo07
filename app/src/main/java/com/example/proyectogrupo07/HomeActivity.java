@@ -16,7 +16,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MyAdapter adapter;
@@ -57,7 +57,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if(!response.isSuccessful()) {
-                    Toast.makeText(Home.this, "Error al obtener los productos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "Error al obtener los productos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -67,7 +67,7 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(Home.this, "Error al obtener los productos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Error al obtener los productos", Toast.LENGTH_SHORT).show();
             }
         });
     }
