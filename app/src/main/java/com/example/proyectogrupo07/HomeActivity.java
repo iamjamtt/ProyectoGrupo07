@@ -35,12 +35,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // Inicializar el botón y obtener los datos del login y guardarlos en SharedPreferences
-        int usuario_id = getIntent().getIntExtra("usuario_id", 0);
-        String nombre = getIntent().getStringExtra("nombre");
-        String apellido = getIntent().getStringExtra("apellido");
-        String correo = getIntent().getStringExtra("correo");
-        String contrasena = getIntent().getStringExtra("contrasena");
-        guardarDatos(usuario_id, nombre, apellido, correo, contrasena);
         btnCerrarSesion = findViewById(R.id.btnLogout);
         tvNombre = findViewById(R.id.tvNombreHombe);
         tvCorreo = findViewById(R.id.tvCorreoHome);
@@ -62,13 +56,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Eliminar el token de la sesión
-                SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.clear();
                 editor.apply();
 
                 // Redirigir al login
                 viewLogin();
+                finish();
             }
         });
     }
@@ -104,18 +99,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void guardarDatos(int usuario_id, String nombre, String apellido, String correo, String contrasena) {
-        // guardar datos en SharedPreferences
-        SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("usuario_id", usuario_id);
-        editor.putString("nombre", nombre);
-        editor.putString("apellido", apellido);
-        editor.putString("correo", correo);
-        editor.putString("contrasena", contrasena);
-        editor.apply();
-    }
-
     private void obtenerDatos() {
         // Obtener los datos de SharedPreferences
         SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
@@ -123,9 +106,8 @@ public class HomeActivity extends AppCompatActivity {
         String nombre = preferences.getString("nombre", null);
         String apellido = preferences.getString("apellido", null);
         String correo = preferences.getString("correo", null);
-        String contrasena = preferences.getString("contrasena", null);
 
-        if (usuario_id != 0 && nombre != null && apellido != null && correo != null && contrasena != null) {
+        if (usuario_id != 0 && nombre != null && apellido != null && correo != null) {
             // Mostrar los datos en los TextView
             tvNombre.setText(nombre + " " + apellido);
             tvCorreo.setText(correo);
