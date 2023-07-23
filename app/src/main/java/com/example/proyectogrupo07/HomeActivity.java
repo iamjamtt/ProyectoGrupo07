@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private List<Producto> listaProductos;
 
     TextView tvNombre, tvCorreo;
-    private Button btnCerrarSesion;
+    private Button btnCerrarSesion, btnPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Inicializar el botón y obtener los datos del login y guardarlos en SharedPreferences
         btnCerrarSesion = findViewById(R.id.btnLogout);
+        btnPerfil = findViewById(R.id.btnPerfil);
         tvNombre = findViewById(R.id.tvNombreHombe);
         tvCorreo = findViewById(R.id.tvCorreoHome);
         obtenerDatos();
@@ -64,6 +65,14 @@ public class HomeActivity extends AppCompatActivity {
                 // Redirigir al login
                 viewLogin();
                 finish();
+            }
+        });
+
+        // Ver perfil
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPerfil();
             }
         });
     }
@@ -109,10 +118,15 @@ public class HomeActivity extends AppCompatActivity {
 
         if (usuario_id != 0 && nombre != null && apellido != null && correo != null) {
             // Mostrar los datos en los TextView
-            tvNombre.setText(nombre + " " + apellido);
-            tvCorreo.setText(correo);
+            tvNombre.setText("Usuario: " + nombre + " " + apellido);
+            tvCorreo.setText("Correo: " + correo);
         } else {
             Toast.makeText(this, "Error al obtener los datos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void viewPerfil() {
+        Intent intent = new Intent(this, PerfilActivity.class);
+        startActivity(intent);
     }
 }

@@ -11,12 +11,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints,TextSizeCheck"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btnCarritoHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/colorButton"
+            android:text="@string/btnCarrito"
+            android:textSize="16sp"
+            app:icon="@drawable/icon_carrito"
+            app:iconPadding="0sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/tvNombreHombe"
@@ -53,36 +71,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnPerfil"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_weight="1"
-                android:layout_marginStart="20dp"
-                android:backgroundTint="@color/colorTitle"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="@string/btnPerfil"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBackground"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:iconTint="@color/colorAccent"
                 app:rippleColor="@color/colorButton"
                 tools:ignore="VisualLintButtonSize" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
-
             <Button
                 android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorTextSecondary"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginEnd="20dp"
                 android:text="@string/btnLogout"
                 android:textColor="@color/colorBackground"
                 android:textSize="16sp"

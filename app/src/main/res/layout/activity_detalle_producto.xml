@@ -25,20 +25,20 @@
             android:layout_weight="1"
             android:backgroundTint="@color/colorTextSecondary"
             android:text="@string/btnRegresar"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnCarrito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorTitle"
             android:drawableLeft="@drawable/icon_carrito"
             android:text="@string/btnCarrito"
             android:textColor="@color/colorText"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,13 +87,13 @@
             android:id="@+id/txt_precio_producto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_weight="10"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="@string/txt_precio_producto"
             android:textColor="@color/colorText"
-            android:layout_marginLeft="15dp"
-            android:textSize="20sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView6"
@@ -101,10 +101,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="@string/txt_precio"
             android:textColor="@color/colorText"
-            android:textSize="20sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAgregar"
@@ -113,10 +113,10 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorTitle"
-            android:text="@string/btnAgregar"
             android:drawableLeft="@drawable/icon_carrito"
+            android:text="@string/btnAgregar"
             android:textColor="@color/colorText"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
