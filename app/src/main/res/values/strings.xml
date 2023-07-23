@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">pclShop</string>
+    <string name="pref_file">com.example.pclshop.PREFERENCE_FILE_KEY</string>
+    <string name="pref_usuario_id"></string>
+    <string name="pref_nombre"></string>
+    <string name="pref_apellido"></string>
+    <string name="pref_correo"></string>
+    <string name="pref_contrasena"></string>
 
     <!-- Strings for the Home Ramita Jamt -->
     <string name="tvTitleHome">Productos</string>
@@ -8,8 +14,19 @@
     <string name="btnPerfil">Perfil</string>
     <string name="btnLogout">Cerrar Sesión</string>
 
-    <string name="tvNombrePruebaPlaceholders">Nombre</string>
-    <string name="tvApellidoPruebaPlaceholders">Apellido</string>
-    <string name="tvCorreoPruebaPlaceholders">Correo</string>
+    <!-- Strings for the Home Ramita Isabel -->
+    <string name="tvTituloLogin">Iniciar Sesión</string>
+    <string name="tvTituloRegistro">Registro de Usuario</string>
+    <string name="btnLoginLogin">Iniciar</string>
+    <string name="btnRegistroLogin">Registrarse</string>
+    <string name="tvPlaceholderCorreoLogin">Ingrese su correo</string>
+    <string name="tvPlaceholderContraseñaLogin">Ingrese su contraseña</string>
+
+    <string name="tvPlaceholderNombreRegister">Ingrese su nombre</string>
+    <string name="tvPlaceholderApellidoRegister">Ingrese su apellido</string>
+    <string name="tvPlaceholderCorreoRegister">Ingrese su correo</string>
+    <string name="tvPlaceholderContrasenaRegister">Ingrese su contrasena</string>
+    <string name="btnRegresarRegister">Regresar</string>
+    <string name="btnRegistroRegister">Registrarse</string>
 
 </resources>

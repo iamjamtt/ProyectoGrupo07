@@ -9,12 +9,11 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
     @GET("producto")
-    Call<List<Product>> getProductos();
-
-    @POST("usuario")
-    Call<ApiResp> postUsuarioRegistro(@Body Usuario usuario);
+    Call<List<Producto>> getProductos();
 
     @POST("usuario/auth")
-    Call<ApiResp> postUsuarioLogin(@Body Login login);
+    Call<List<Usuario>> postUsuarioLogin(@Body Login login);
 
+    @POST("usuario")
+    Call<List<Usuario>> postRegistro(@Body Usuario usuario);
 }
