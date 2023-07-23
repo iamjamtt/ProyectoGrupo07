@@ -31,7 +31,6 @@
 
     <!-- Strings - Ramita Onuki -->
     //Aqui se agregan los strings que se van a utilizar en la vista de detalle de producto
-    <string name="app_name">ProyectoGrupo07</string>
     <string name="btnCarrito">Ir al Carrito</string>
     <string name="btnRegresar">Regresar</string>
     <string name="txt_nombre_producto">Nombre del Producto</string>

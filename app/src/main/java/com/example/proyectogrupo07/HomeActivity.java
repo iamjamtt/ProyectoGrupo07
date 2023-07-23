@@ -123,9 +123,8 @@ public class HomeActivity extends AppCompatActivity {
         String nombre = preferences.getString("nombre", null);
         String apellido = preferences.getString("apellido", null);
         String correo = preferences.getString("correo", null);
-        String contrasena = preferences.getString("contrasena", null);
 
-        if (usuario_id != 0 && nombre != null && apellido != null && correo != null && contrasena != null) {
+        if (usuario_id != 0 && nombre != null && apellido != null && correo != null) {
             // Mostrar los datos en los TextView
             tvNombre.setText(nombre + " " + apellido);
             tvCorreo.setText(correo);

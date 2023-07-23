@@ -59,16 +59,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private void sesion() {
         // Obtener el token de la sesión
-        SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
         int usuario_id = preferences.getInt("usuario_id", 0);
         String nombre = preferences.getString("nombre", null);
         String apellido = preferences.getString("apellido", null);
         String correo = preferences.getString("correo", null);
-        String contrasena = preferences.getString("contrasena", null);
 
-        if(usuario_id != 0 && nombre != null && apellido != null && correo != null && contrasena != null) {
+        if(usuario_id != 0 && nombre != null && apellido != null && correo != null) {
             // Ir al activity Home
-            ViewHome(usuario_id, nombre, apellido, correo, contrasena);
+            ViewHome(usuario_id, nombre, apellido, correo);
+            finish();
         }
     }
 
@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "¡Login exitoso! Usuario: " + nombre, Toast.LENGTH_SHORT).show();
 
                         // Ir al activity Home
-                        ViewHome(usuario_id, nombre, apellido, correo, contrasena);
+                        ViewHome(usuario_id, nombre, apellido, correo);
                     } else {
                         Toast.makeText(LoginActivity.this, "Respuesta vacía del servidor", Toast.LENGTH_SHORT).show();
                     }
@@ -117,14 +117,13 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void ViewHome(int usuario_id, String nombre, String apellido, String correo, String contrasena) {
+    private void ViewHome(int usuario_id, String nombre, String apellido, String correo) {
         // ir al activity de registro
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("usuario_id", usuario_id);
         intent.putExtra("nombre", nombre);
         intent.putExtra("apellido", apellido);
         intent.putExtra("correo", correo);
-        intent.putExtra("contrasena", contrasena);
         startActivity(intent);
     }
 }
