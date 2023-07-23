@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -42,10 +44,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
 
         holder.tvNombre.setText(producto.getPronombre());
         holder.tvDescripcion.setText(producto.getProdescripcion());
-        holder.tvPrecio.setText(String.valueOf(producto.getProprecio()));
+        double precio = producto.getProprecio();
+        DecimalFormat df = new DecimalFormat("#.00");
+        String precioFormateado = df.format(precio);
+        holder.tvPrecio.setText("S/. " + precioFormateado);
 
         // Cargar la imagen utilizando Glide o alguna otra biblioteca de manejo de imágenes
         Glide.with(context).load(producto.getProimagen()).into(holder.ivImagen);
+
+        // Agregar el OnClickListener al itemView (elemento raíz de la vista del producto)
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener el producto correspondiente al clic
+                Producto producto = productos.get(position);
+
+                Toast.makeText(context, "Producto: " + producto.getPronombre(), Toast.LENGTH_SHORT).show();
+
+                // Crear un intent para abrir la actividad de detalle del producto
+                // Gooo tu mismo eres Yoshiii
+            }
+        });
     }
 
     @Override

@@ -13,6 +13,11 @@
     <string name="tvCorreoPlaceholders">Correo</string>
     <string name="btnPerfil">Perfil</string>
     <string name="btnLogout">Cerrar Sesión</string>
+    <string name="tvTituloPerfil">Datos de Usuario</string>
+    <string name="tvNombrePerfil">Nombre: </string>
+    <string name="tvApellidoPerfil">Apellido: </string>
+    <string name="tvCorreoPerfil">Correo: </string>
+    <string name="btnRegresarPerfil">Regresar</string>
 
     <!-- Strings for the Home Ramita Isabel -->
     <string name="tvTituloLogin">Iniciar Sesión</string>
