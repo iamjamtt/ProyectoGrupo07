@@ -1,53 +1,58 @@
 package com.example.proyectogrupo07;
 
 public class Product {
-    public int productId;
-    public String name;
-    public String description;
-    public String price;
-    public String image;
+    public int producto_id;
+    public String pronombre;
+    public String prodescripcion;
+    public double proprecio;
+    public String proimagen;
 
-    public Product(int productId, String name, String description, String price, String image) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.image = image;
+    public Product(int producto_id, String pronombre, String prodescripcion, double proprecio, String proimagen) {
+        this.producto_id = producto_id;
+        this.pronombre = pronombre;
+        this.prodescripcion = prodescripcion;
+        this.proprecio = proprecio;
+        this.proimagen = proimagen;
     }
 
-    public int getProductId() { return productId; }
-
-    public void setProductId(int productId) { this.productId = productId; }
-
-    public String getName() {
-        return name;
+    public int getProduct_id() {
+        return producto_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProduct_id(int producto_id) {
+        this.producto_id = producto_id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPronombre() {
+        return pronombre;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPronombre(String pronombre) {
+        this.pronombre = pronombre;
     }
 
-    public String getPrice() {
-        return price;
+    public String getProdescripcion() {
+        return prodescripcion;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+
+    public void setProdescripcion(String prodescripcion) {
+        this.prodescripcion = prodescripcion;
     }
 
-    public String getImage() {
-        return image;
+    public double getProprecio() {
+        return proprecio;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setProprecio(double proprecio) {
+        this.proprecio = proprecio;
+    }
+
+    public String getProimagen() {
+        return proimagen;
+    }
+
+    public void setProimagen(String proimagen) {
+        this.proimagen = proimagen;
     }
 }

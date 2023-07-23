@@ -7,4 +7,9 @@
     <string name="tvCorreoPlaceholders">Correo</string>
     <string name="btnPerfil">Perfil</string>
     <string name="btnLogout">Cerrar Sesión</string>
+
+    <string name="tvNombrePruebaPlaceholders">Nombre</string>
+    <string name="tvApellidoPruebaPlaceholders">Apellido</string>
+    <string name="tvCorreoPruebaPlaceholders">Correo</string>
+
 </resources>
