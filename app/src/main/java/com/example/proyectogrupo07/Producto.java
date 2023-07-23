@@ -1,13 +1,13 @@
 package com.example.proyectogrupo07;
 
-public class Product {
+public class Producto {
     public int producto_id;
     public String pronombre;
     public String prodescripcion;
     public double proprecio;
     public String proimagen;
 
-    public Product(int producto_id, String pronombre, String prodescripcion, double proprecio, String proimagen) {
+    public Producto(int producto_id, String pronombre, String prodescripcion, double proprecio, String proimagen) {
         this.producto_id = producto_id;
         this.pronombre = pronombre;
         this.prodescripcion = prodescripcion;

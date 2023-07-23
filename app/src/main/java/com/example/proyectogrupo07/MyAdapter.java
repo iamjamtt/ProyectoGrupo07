@@ -17,14 +17,14 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
     private Context context;
-    private List<Product> productos;
+    private List<Producto> productos;
 
-    public MyAdapter(Context context, List<Product> productos) {
+    public MyAdapter(Context context, List<Producto> productos) {
         this.context = context;
         this.productos = productos;
     }
 
-    public void setProductos(List<Product> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
         notifyDataSetChanged();
     }
@@ -38,7 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product producto = productos.get(position);
+        Producto producto = productos.get(position);
 
         holder.tvNombre.setText(producto.getPronombre());
         holder.tvDescripcion.setText(producto.getProdescripcion());

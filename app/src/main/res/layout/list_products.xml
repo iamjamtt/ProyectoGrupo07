@@ -8,6 +8,7 @@
     android:animateLayoutChanges="true"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
+    app:cardMaxElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -73,14 +74,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/ivProductImage"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-black"
                 android:text="S/. 10.00"
                 android:textSize="30dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
