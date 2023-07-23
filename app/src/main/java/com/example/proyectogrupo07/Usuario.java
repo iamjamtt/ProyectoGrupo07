@@ -14,11 +14,6 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Usuario(String correo, String contrasena) {
-        this.correo = correo;
-        this.contrasena = contrasena;
-    }
-
     public int getUsuario_id() { return usuario_id; }
 
     public void setUsuario_id(int usuario_id) { this.usuario_id = usuario_id; }

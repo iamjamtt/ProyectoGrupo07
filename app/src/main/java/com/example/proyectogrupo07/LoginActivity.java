@@ -2,18 +2,18 @@ package com.example.proyectogrupo07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,69 +27,104 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Inicializamos Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.50:4000/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        // Verificar si hay una sesión activa
+        sesion();
 
-        //Obtenemos la instancia del servicio de la API
-        apiInterface = retrofit.create(ApiInterface.class);
-
-        //O
         txtUsuario = findViewById(R.id.txtUsuario);
         txtPassword = findViewById(R.id.txtPassword);
+        btnIniciar = findViewById(R.id.btnIniciar);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
 
-
-        Button btnIniciar = findViewById(R.id.btnIniciar);
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Obtenemos los datos del formulario
-                String correo = txtUsuario.getText().toString();
-                String contrasena = txtPassword.getText().toString();
+                String correo = txtUsuario.getText().toString().trim();
+                String contrasena = txtPassword.getText().toString().trim();
 
-                //Creamos el objeto de solicitud de inicio de sesion
-                Login login = new Login(correo, contrasena);
-
-                //Realizamos la solicitud POST para el inicio de sesion
-                Call<ApiResp> call = apiInterface.postUsuarioLogin(login);
-                call.enqueue(new Callback<ApiResp>() {
-                    @Override
-                    public void onResponse(Call<ApiResp> call, Response<ApiResp> response) {
-                        if(response.isSuccessful()){
-                            ApiResp apiResp = response.body();
-                            Toast.makeText(LoginActivity.this, "Inicio de Sesion Exitosa",Toast.LENGTH_SHORT).show();
-
-                            if(apiResp != null){
-                                String message = apiResp.getMessage();
-
-                                if (message != null && message.equals("content not found")) {
-                                    Toast.makeText(LoginActivity.this, "Usuario o Contraseña Incorrectas",Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                                }
-                            }else{
-                                // Si loginResponse es nulo, hubo un problema en la respuesta de la API.
-                                Toast.makeText(LoginActivity.this, "Error en la respuesta de la API", Toast.LENGTH_SHORT).show();
-                            }
-                        }else{
-                            // La solicitud falló
-                            Toast.makeText(LoginActivity.this, "Error en inicio de sesión", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ApiResp> call, Throwable t) {
-                        // Manejar el error en caso de que la solicitud falle (por ejemplo, mostrar un mensaje de error).
-                        Toast.makeText(LoginActivity.this, "E " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("API", "Er: " + t.getMessage());
-                    }
-                });
-
-
+                if (!correo.isEmpty() && !contrasena.isEmpty()) {
+                    loginUser(correo, contrasena);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewRegistro();
+            }
+        });
+    }
+
+    private void sesion() {
+        // Obtener el token de la sesión
+        SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
+        int usuario_id = preferences.getInt("usuario_id", 0);
+        String nombre = preferences.getString("nombre", null);
+        String apellido = preferences.getString("apellido", null);
+        String correo = preferences.getString("correo", null);
+        String contrasena = preferences.getString("contrasena", null);
+
+        if(usuario_id != 0 && nombre != null && apellido != null && correo != null && contrasena != null) {
+            // Ir al activity Home
+            ViewHome(usuario_id, nombre, apellido, correo, contrasena);
+        }
+    }
+
+    private void loginUser(String correo, String contrasena) {
+        ApiInterface apiInterface = ApiCliente.getRetrofitInstance().create(ApiInterface.class);
+        Login loginData = new Login(correo, contrasena);
+
+        Call<List<Usuario>> call = apiInterface.postUsuarioLogin(loginData);
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+                    List<Usuario> apiResponseList = response.body();
+                    if (apiResponseList != null && !apiResponseList.isEmpty()) {
+                        Usuario usuario = apiResponseList.get(0);
+                        // Aquí puedes obtener los datos del usuario, por ejemplo:
+                        int usuario_id = usuario.getUsuario_id();
+                        String nombre = usuario.getNombre();
+                        String apellido = usuario.getApellido();
+                        String correo = usuario.getCorreo();
+                        String contrasena = usuario.getContrasena();
+
+                        // Continúa con la lógica de inicio de sesión según tus necesidades
+                        Toast.makeText(LoginActivity.this, "¡Login exitoso! Usuario: " + nombre, Toast.LENGTH_SHORT).show();
+
+                        // Ir al activity Home
+                        ViewHome(usuario_id, nombre, apellido, correo, contrasena);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Respuesta vacía del servidor", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, "Error en la comunicación con el servidor 1", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Error en la comunicación con el servidor 2", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void ViewRegistro() {
+        // ir al activity de registro
+        Intent intent = new Intent(this, RegistrarActivity.class);
+        startActivity(intent);
+    }
+
+    private void ViewHome(int usuario_id, String nombre, String apellido, String correo, String contrasena) {
+        // ir al activity de registro
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("usuario_id", usuario_id);
+        intent.putExtra("nombre", nombre);
+        intent.putExtra("apellido", apellido);
+        intent.putExtra("correo", correo);
+        intent.putExtra("contrasena", contrasena);
+        startActivity(intent);
     }
 }
