@@ -98,7 +98,7 @@
             tools:layout_editor_absoluteX="1dp">
 
             <TextView
-                    android:id="@+id/txt_precio_producto"
+                    android:id="@+id/txt_precio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -110,7 +110,7 @@
                     android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txt_precio_producto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="15"
