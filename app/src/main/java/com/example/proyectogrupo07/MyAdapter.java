@@ -1,6 +1,7 @@
 package com.example.proyectogrupo07;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,10 +60,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
                 // Obtener el producto correspondiente al clic
                 Producto producto = productos.get(position);
 
-                Toast.makeText(context, "Producto: " + producto.getPronombre(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Producto: " + producto.getPronombre(), Toast.LENGTH_SHORT).show();
+
+                int idProducto = producto.getProduct_id();
 
                 // Crear un intent para abrir la actividad de detalle del producto
-                // Gooo tu mismo eres Yoshiii
+                Intent intent = new Intent(context, DetalleProducto.class);
+                intent.putExtra("idProducto", idProducto);
+                context.startActivity(intent);
             }
         });
     }
