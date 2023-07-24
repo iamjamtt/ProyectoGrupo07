@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado cuando el botón está presionado -->
+    <item android:drawable="@drawable/done" android:state_pressed="true" />
+    <!-- Estado cuando el botón está deshabilitado -->
+    <item android:drawable="@drawable/agregar" android:state_enabled="false" />
+    <!-- Estado por defecto (cuando el botón no está presionado ni deshabilitado) -->
+    <item android:drawable="@drawable/agregar" />
+</selector>

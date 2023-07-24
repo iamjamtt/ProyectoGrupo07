@@ -23,7 +23,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorTextSecondary"
+            android:backgroundTint="@color/colorBsSecondary"
+            android:textColor="@color/colorText"
             android:text="@string/btnRegresar"
             android:textSize="16sp"
             android:onClick="onRegresarButtonClick" />
@@ -35,12 +36,12 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorTitle"
-            android:drawableLeft="@drawable/icon_carrito"
-            android:text="@string/btnCarrito"
-            android:textColor="@color/colorText"
+            android:backgroundTint="@color/colorButton"
+            android:drawableLeft="@drawable/icon_carrito2"
             android:onClick="onCarritoButtonClick"
-            android:textSize="16sp"/>
+            android:text="@string/btnCarrito"
+            android:textColor="@color/colorButtonSecondary"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -127,12 +128,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/colorButton"
-            android:drawableLeft="@drawable/icon_carrito2"
+            android:backgroundTint="@color/colorBsPrimary"
+            android:drawableLeft="@drawable/agregar"
+            android:onClick="onAgregarCarritoButtonClick"
             android:text="@string/btnAgregar"
             android:textColor="@color/colorButtonSecondary"
-            android:onClick="onAgregarCarritoButtonClick"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout

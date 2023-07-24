@@ -59,24 +59,24 @@
             android:id="@+id/btnIniciar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:backgroundTint="@color/colorButton"
-            android:text="@string/btnLoginLogin"
-            android:textColor="@color/colorBackground"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/colorBsPrimary"
+            android:text="@string/btnLoginLogin"
+            android:textColor="@color/colorBackground"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:backgroundTint="@color/colorAccent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/colorBsSecondary"
             android:text="@string/btnRegistroLogin"
             android:textColor="@color/colorText"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:textSize="16sp" />
     </LinearLayout>
 

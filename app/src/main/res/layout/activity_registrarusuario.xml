@@ -88,19 +88,21 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/colorButton"
+            android:backgroundTint="@color/colorBsSuccess"
+            android:textSize="16dp"
             android:text="@string/btnRegistroRegister" />
 
         <Button
             android:id="@+id/btnRegresarRegistro"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@color/black"
-            android:text="@string/btnRegresarRegister" />
+            android:backgroundTint="@color/colorBsSecondary"
+            android:text="@string/btnRegresarRegister"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
