@@ -2,7 +2,9 @@ package com.example.proyectogrupo07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,8 +78,13 @@ public class RegistrarActivity extends AppCompatActivity {
                         String correo = usuario.getCorreo();
                         String contrasena = usuario.getContrasena();
 
+                        // Guardar los datos en SharedPreferences
+                        guardarDatos(usuario_id, nombre, apellido, correo);
+
                         // Continúa con la lógica de inicio de sesión según tus necesidades
                         Toast.makeText(RegistrarActivity.this, "¡Registro exitoso! Usuario: " + nombre, Toast.LENGTH_SHORT).show();
+                        ViewHome();
+                        finish();
                     } else {
                         Toast.makeText(RegistrarActivity.this, "No se registro el usuario", Toast.LENGTH_SHORT).show();
                     }
@@ -95,6 +102,23 @@ public class RegistrarActivity extends AppCompatActivity {
 
     private void viewLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void guardarDatos(int usuario_id, String nombre, String apellido, String correo) {
+        // guardar datos en SharedPreferences
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("usuario_id", usuario_id);
+        editor.putString("nombre", nombre);
+        editor.putString("apellido", apellido);
+        editor.putString("correo", correo);
+        editor.apply();
+    }
+
+    private void ViewHome() {
+        // ir al activity de registro
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 }
