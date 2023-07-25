@@ -33,7 +33,7 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/img_producto"
+                    android:id="@+id/imgProductoCarrito"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_alignParentStart="true"
@@ -54,12 +54,12 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="2dp"
-                    android:layout_toEndOf="@+id/img_producto"
-                    android:layout_toRightOf="@+id/img_producto"
+                    android:layout_toEndOf="@+id/imgProductoCarrito"
+                    android:layout_toRightOf="@+id/imgProductoCarrito"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtNombreProducto"
+                        android:id="@+id/txtNombreProductoCarrito"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
@@ -69,7 +69,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtDescripcion"
+                        android:id="@+id/txtDescripcionCarrito"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
@@ -79,7 +79,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtPrecio"
+                        android:id="@+id/txtPrecioCarrito"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -101,7 +101,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/btnEliminarPoductoCarrito"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:backgroundTint="@color/colorBsDanger"

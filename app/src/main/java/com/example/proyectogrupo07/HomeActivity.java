@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private List<Producto> listaProductos;
 
     TextView tvNombre, tvCorreo;
-    private Button btnCerrarSesion, btnPerfil;
+    private Button btnCerrarSesion, btnPerfil, btnCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         // Inicializar el botón y obtener los datos del login y guardarlos en SharedPreferences
         btnCerrarSesion = findViewById(R.id.btnLogout);
         btnPerfil = findViewById(R.id.btnPerfil);
+        btnCarrito = findViewById(R.id.btnCarritoHome);
         tvNombre = findViewById(R.id.tvNombreHombe);
         tvCorreo = findViewById(R.id.tvCorreoHome);
         obtenerDatos();
@@ -73,6 +74,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 viewPerfil();
+            }
+        });
+
+        btnCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewCarrito();
             }
         });
     }
@@ -127,6 +135,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void viewPerfil() {
         Intent intent = new Intent(this, PerfilActivity.class);
+        startActivity(intent);
+    }
+
+    private void viewCarrito() {
+        Intent intent = new Intent(this, CarritoCompra.class);
         startActivity(intent);
     }
 }

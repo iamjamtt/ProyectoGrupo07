@@ -1,6 +1,9 @@
 package com.example.proyectogrupo07;
 
-public class Producto {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Producto implements Parcelable {
     public int producto_id;
     public String pronombre;
     public String prodescripcion;
@@ -54,5 +57,39 @@ public class Producto {
 
     public void setProimagen(String proimagen) {
         this.proimagen = proimagen;
+    }
+
+    protected Producto(Parcel in) {
+        producto_id = in.readInt();
+        pronombre = in.readString();
+        prodescripcion = in.readString();
+        proprecio = in.readDouble();
+        proimagen = in.readString();
+    }
+
+    public static final Creator<Producto> CREATOR = new Creator<Producto>() {
+        @Override
+        public Producto createFromParcel(Parcel in) {
+            return new Producto(in);
+        }
+
+        @Override
+        public Producto[] newArray(int size) {
+            return new Producto[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(producto_id);
+        dest.writeString(pronombre);
+        dest.writeString(prodescripcion);
+        dest.writeDouble(proprecio);
+        dest.writeString(proimagen);
     }
 }

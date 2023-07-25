@@ -21,6 +21,9 @@ import retrofit2.Response;
 
 public class DetalleProducto extends AppCompatActivity {
 
+    private Producto productoSeleccionado;
+    int idProducto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class DetalleProducto extends AppCompatActivity {
 
         //Obtener el id del producto seleccionado
         Intent intent = getIntent();
-        int idProducto = intent.getIntExtra("idProducto", 0);
+        idProducto = intent.getIntExtra("idProducto", 0);
 
         //Obtener el producto correspondiente al id
         mostrarDetallesProducto(idProducto);
@@ -40,11 +43,23 @@ public class DetalleProducto extends AppCompatActivity {
     }
 
     public void onAgregarCarritoButtonClick(View view) {
-        String producto = ((TextView) findViewById(R.id.txt_nombre_producto)).getText().toString();
-        Toast.makeText(this, producto+" agregado al carrito", Toast.LENGTH_SHORT).show();
-        Button botonEjemplo = findViewById(R.id.btnAgregar);
-        botonEjemplo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.done, 0, 0, 0);
+        // Asegúrate de que "productoSeleccionado" no sea nulo antes de agregarlo al carrito.
+        if (productoSeleccionado != null) {
+            Intent intent = new Intent(this, CarritoCompra.class);
+            intent.putExtra("productoSeleccionado", productoSeleccionado);
+
+            Button botonEjemplo = findViewById(R.id.btnAgregar);
+            botonEjemplo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.done, 0, 0, 0);
+
+            // Mostrar un mensaje de éxito (opcional)
+            Toast.makeText(this, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+        } else {
+            // Maneja el caso si el producto seleccionado es nulo
+            Toast.makeText(this, "No se pudo agregar el producto al carrito", Toast.LENGTH_SHORT).show();
+        }
+
     }
+
 
     public void onCarritoButtonClick(View view) {
         Intent intent = new Intent(this, CarritoCompra.class);
@@ -65,10 +80,10 @@ public class DetalleProducto extends AppCompatActivity {
                     // Obtener el producto del cuerpo de la respuesta
                     List<Producto> listaProductos = response.body();
                     if (!listaProductos.isEmpty()) {
-                        Producto producto = listaProductos.get(0);
+                        productoSeleccionado = listaProductos.get(0);
 
                         // Ahora que tienes el objeto Producto, puedes mostrar los detalles en la interfaz de usuario
-                        mostrarDetallesEnInterfaz(producto);
+                        mostrarDetallesEnInterfaz(productoSeleccionado);
                     } else {
                         // La lista de productos está vacía, no se encontró el producto con el ID especificado
                         // Realiza una acción o muestra un mensaje apropiado en la interfaz
