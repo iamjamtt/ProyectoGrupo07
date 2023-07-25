@@ -12,4 +12,12 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorButton">#FF5722</color>
     <color name="colorButtonSecondary">#FFFFFF</color>
+
+    <!-- Bootstrap Colors -->
+    <color name="colorBsPrimary">#009ef7</color>
+    <color name="colorBsSecondary">#e1e3ea</color>
+    <color name="colorBsSuccess">#50cd89</color>
+    <color name="colorBsWarning">#ffc700</color>
+    <color name="colorBsDanger">#f1416c</color>
+
 </resources>

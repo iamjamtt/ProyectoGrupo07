@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,10 @@ public class DetalleProducto extends AppCompatActivity {
     }
 
     public void onAgregarCarritoButtonClick(View view) {
-        Toast.makeText(this, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+        String producto = ((TextView) findViewById(R.id.txt_nombre_producto)).getText().toString();
+        Toast.makeText(this, producto+" agregado al carrito", Toast.LENGTH_SHORT).show();
+        Button botonEjemplo = findViewById(R.id.btnAgregar);
+        botonEjemplo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.done, 0, 0, 0);
     }
 
     public void onCarritoButtonClick(View view) {

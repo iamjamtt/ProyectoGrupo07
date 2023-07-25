@@ -23,7 +23,7 @@
             android:id="@+id/btnRegresarPerfilId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/colorBsSecondary"
             android:text="@string/btnRegresarPerfil"
             android:textColor="@color/colorText"
             android:textSize="16sp"
@@ -38,9 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:textAllCaps="true"
             android:text="@string/tvTituloPerfil"
             android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBsPrimary"
             android:textSize="30sp"
             android:textStyle="bold" />
 
