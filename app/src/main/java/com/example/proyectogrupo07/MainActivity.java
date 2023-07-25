@@ -150,9 +150,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Implementar la validación del número de tarjeta, la fecha de vencimiento y el CVV
-                // Puedes utilizar los métodos validateCardNumber(), validateExpirationDate() y validateCvv()
-                // Devuelve true si todos los campos son válidos
+
 
                 // Simular el proceso de pago y mostrar el mensaje de confirmación
                 if (simulatePayment()) {
@@ -173,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // Utilizar expresión regular para verificar que el número de tarjeta tenga el formato correcto
         // La expresión regular valida números de tarjeta de crédito y débito de 16 dígitos
         return cardNumber.matches("^\\d{16}$");
     }
@@ -194,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Método para simular el proceso de pago
     private boolean simulatePayment() {
-        // Implementar la lógica para simular el pago
+
         // Devuelve true si el pago es exitoso, false en caso contrario
         return true;
     }
