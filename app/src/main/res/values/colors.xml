@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF4081</color>
+    <color name="colorPrimaryDark">#D81B60</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryBlue">#1976D2</color> <!-- Color azul a utilizar -->
+    <color name="colorPrimaryDarkBlue">#0D47A1</color>
+    <color name="white">#FFFFFF</color> <!-- Color blanco -->
 </resources>
