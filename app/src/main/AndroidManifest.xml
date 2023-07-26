@@ -39,6 +39,9 @@
         <activity
             android:name=".DetalleProducto"
             android:exported="true" />
+        <activity
+            android:name=".PagoActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

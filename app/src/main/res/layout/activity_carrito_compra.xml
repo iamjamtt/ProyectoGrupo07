@@ -66,5 +66,25 @@
         android:layout_marginBottom="10dp"
         tools:layout_editor_absoluteX="1dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCarritoCompra"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="347dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorBsPrimary"
+            android:onClick="onPagarButtonClick"
+            android:text="Pagar" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

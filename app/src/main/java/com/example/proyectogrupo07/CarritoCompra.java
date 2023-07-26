@@ -14,30 +14,30 @@
 
     public class CarritoCompra extends AppCompatActivity {
 
-        private static List<Producto> cartItems;
-        private RecyclerView recyclerView;
-        private MyAdapterCarrito adapter;
+//        private static List<Producto> cartItems;
+//        private RecyclerView recyclerView;
+//        private MyAdapterCarrito adapter;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_carrito_compra);
 
-            // Obtener los productos seleccionados del Intent
-            cartItems = new ArrayList<>();
-            Intent intent = getIntent();
-            Producto productoSeleccionado = intent.getParcelableExtra("productoSeleccionado");
-            if (productoSeleccionado != null) {
-                cartItems.add(productoSeleccionado);
-            }
-
-            // Inicializar el RecyclerView
-            recyclerView = findViewById(R.id.recyclerViewCarritoCompra);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-            // Inicializar el adaptador y asignarlo al RecyclerView
-            adapter = new MyAdapterCarrito(cartItems);
-            recyclerView.setAdapter(adapter);
+//            // Obtener los productos seleccionados del Intent
+//            cartItems = new ArrayList<>();
+//            Intent intent = getIntent();
+//            Producto productoSeleccionado = intent.getParcelableExtra("productoSeleccionado");
+//            if (productoSeleccionado != null) {
+//                cartItems.add(productoSeleccionado);
+//            }
+//
+//            // Inicializar el RecyclerView
+//            recyclerView = findViewById(R.id.recyclerViewCarritoCompra);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//            // Inicializar el adaptador y asignarlo al RecyclerView
+//            adapter = new MyAdapterCarrito(cartItems);
+//            recyclerView.setAdapter(adapter);
         }
 
         //Onclik para el boton de seguir comprando
@@ -47,14 +47,24 @@
         }
 
         // Método para agregar el producto al carrito
-        public void agregarProductoAlCarrito(Producto producto) {
-            cartItems.add(producto);
-            adapter.notifyDataSetChanged();
+//        public void agregarProductoAlCarrito(Producto producto) {
+//            cartItems.add(producto);
+//            adapter.notifyDataSetChanged();
+//        }
+
+        //Onclik para el boton de pagar
+        public void onPagarButtonClick(View view) {
+            // Toast para mostrar que se esta pagando
+
+
+            //Mandar a la vista de PagoActivity
+            Intent intent = new Intent(CarritoCompra.this, PagoActivity.class);
+            startActivity(intent);
         }
 
-        public static List<Producto> getCartItems() {
-            return cartItems;
-        }
+//        public static List<Producto> getCartItems() {
+//            return cartItems;
+//        }
 
 //        public void onPagarButtonClick(View view) {
 //            // Asegúrate de que el carrito no esté vacío antes de pagar.

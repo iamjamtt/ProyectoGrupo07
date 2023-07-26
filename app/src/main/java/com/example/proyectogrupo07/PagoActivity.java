@@ -1,6 +1,7 @@
 package com.example.proyectogrupo07;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -13,11 +14,12 @@ import android.text.TextWatcher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class PagoActivity extends AppCompatActivity {
 
     private EditText editCardNumber, editExpirationDate, editCvv;
     private Button btnPay, btnPickDate;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pago);
 
         editCardNumber = findViewById(R.id.editCardNumber);
         editExpirationDate = findViewById(R.id.editExpirationDate);
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showDatePickerDialog();
             }
-        });}
+        });
+    }
     private void formatCardNumber(Editable s) {
         // Eliminar guiones y espacios en blanco del número de tarjeta
         String cardNumber = s.toString().replace("-", "").replace(" ", "");
@@ -83,82 +86,82 @@ public class MainActivity extends AppCompatActivity {
         editCardNumber.addTextChangedListener(cardNumberTextWatcher);
     }
 
-        // Método para mostrar el DatePickerDialog
-        private void showDatePickerDialog() {
-            final Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
+    // Método para mostrar el DatePickerDialog
+    private void showDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    this,
-                    new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            // Actualizar el campo de fecha de vencimiento con la fecha seleccionada
-                            String formattedDate = String.format("%02d/%02d", month + 1, year % 100);
-                            editExpirationDate.setText(formattedDate);
-                        }
-                    },
-                    year,
-                    month,
-                    1
-            );
-            // Configurar el DatePicker para mostrar solo el spinner de mes y año
-            datePickerDialog.getDatePicker().setCalendarViewShown(false);
-            datePickerDialog.getDatePicker().setSpinnersShown(true);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        // Actualizar el campo de fecha de vencimiento con la fecha seleccionada
+                        String formattedDate = String.format("%02d/%02d", month + 1, year % 100);
+                        editExpirationDate.setText(formattedDate);
+                    }
+                },
+                year,
+                month,
+                1
+        );
+        // Configurar el DatePicker para mostrar solo el spinner de mes y año
+        datePickerDialog.getDatePicker().setCalendarViewShown(false);
+        datePickerDialog.getDatePicker().setSpinnersShown(true);
 
-            // Mostrar el DatePickerDialog
-            datePickerDialog.show();
+        // Mostrar el DatePickerDialog
+        datePickerDialog.show();
 
-        btnPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Obtener los valores de los campos
-                String cardNumber = editCardNumber.getText().toString().trim();
-                String expirationDate = editExpirationDate.getText().toString().trim();
-                String cvv = editCvv.getText().toString().trim();
+    btnPay.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Obtener los valores de los campos
+            String cardNumber = editCardNumber.getText().toString().trim();
+            String expirationDate = editExpirationDate.getText().toString().trim();
+            String cvv = editCvv.getText().toString().trim();
 
-                // Validar campos
-                if (TextUtils.isEmpty(cardNumber)) {
-                    editCardNumber.setError("Ingresa el número de tarjeta");
-                    return;
-                }
-
-                if (!isValidCardNumber(cardNumber)) {
-                    editCardNumber.setError("Número de tarjeta inválido");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(expirationDate)) {
-                    editExpirationDate.setError("Ingresa la fecha de vencimiento");
-                    return;
-                }
-
-                if (!isValidExpirationDate(expirationDate)) {
-                    editExpirationDate.setError("Fecha de vencimiento inválida");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(cvv)) {
-                    editCvv.setError("Ingresa el CVV");
-                    return;
-                }
-
-                if (!isValidCvv(cvv)) {
-                    editCvv.setError("CVV inválido");
-                    return;
-                }
-
-
-
-                // Simular el proceso de pago y mostrar el mensaje de confirmación
-                if (simulatePayment()) {
-                    showConfirmationDialog();
-                }
+            // Validar campos
+            if (TextUtils.isEmpty(cardNumber)) {
+                editCardNumber.setError("Ingresa el número de tarjeta");
+                return;
             }
-        });
-    }
+
+            if (!isValidCardNumber(cardNumber)) {
+                editCardNumber.setError("Número de tarjeta inválido");
+                return;
+            }
+
+            if (TextUtils.isEmpty(expirationDate)) {
+                editExpirationDate.setError("Ingresa la fecha de vencimiento");
+                return;
+            }
+
+            if (!isValidExpirationDate(expirationDate)) {
+                editExpirationDate.setError("Fecha de vencimiento inválida");
+                return;
+            }
+
+            if (TextUtils.isEmpty(cvv)) {
+                editCvv.setError("Ingresa el CVV");
+                return;
+            }
+
+            if (!isValidCvv(cvv)) {
+                editCvv.setError("CVV inválido");
+                return;
+            }
+
+
+
+            // Simular el proceso de pago y mostrar el mensaje de confirmación
+            if (simulatePayment()) {
+                showConfirmationDialog();
+            }
+        }
+    });
+}
 
     private boolean isValidCardNumber(String cardNumber) {
         // Eliminar guiones y espacios en blanco del número de tarjeta
@@ -205,9 +208,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 // Cerrar el AlertDialog cuando se hace clic en el botón "Cerrar"
                 dialog.dismiss();
+                //Redireccionar a la pagina de inicio
+                Intent intent = new Intent(PagoActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }
